@@ -1,4 +1,4 @@
-export const BASE_URL = '/api'
+export const BASE_URL =   location.hostname === "localhost" ? "http://localhost:7777" : "/api";
 
 export const default_profile = "https://t3.ftcdn.net/jpg/09/64/89/20/360_F_964892089_vioRltmAxaoQEBLtYtChVBxIzDWwhA3T.jpg"
 

@@ -12,6 +12,8 @@ function Login() {
   const [email, setEmail] = useState("ms@dev.com");
   const [password, setPassword] = useState("Ms_dhoni2025");
 
+  const [showPassword, setShowPassword] = useState(false);
+
   const toast = useSelector((state: RootState) => state.toast);
 
   let navigate = useNavigate();
@@ -91,16 +93,28 @@ function Login() {
                 className="input mb-3 w-full focus:outline-hidden"
                 onChange={(e) => setEmail(e.target.value)}
               />
-
               <label className="text-slate-100">Password</label>
-              <input
-                id="password"
-                type="password"
-                value={password}
-                placeholder="Enter Password"
-                className="input w-full focus:outline-hidden"
-                onChange={(e) => setPassword(e.target.value)}
-              />
+              <div style={{ position: "relative" }}>
+                <input
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  value={password}
+                  placeholder="Enter Password"
+                  className="input w-full focus:outline-hidden"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <div
+                  onClick={() => setShowPassword(!showPassword)}
+                  style={{
+                    cursor: "pointer",
+                    position: "absolute",
+                    right: "30px",
+                    top: "10px",
+                  }}
+                >
+                  {showPassword ? "hide" : "show"}
+                </div>
+              </div>
 
               <div className="card-actions justify-end mt-5">
                 <a href={"/signup"} className="btn bg-slate-500 text-white">

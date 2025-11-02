@@ -63,15 +63,14 @@ Body
         - sudo scp -r dist/* /var/www/html/
         - Enable port :80 of your instance
     - Backend
-        - updated DB password
-        - whitelist remote IP to mongoDB 
+        - whitelist remote IP ( ec2 instance ) to mongoDB 
         - allowed ec2 instance public IP on mongodb server
-        - Expose backend port in security group 
+        - Expose backend port in security group ( 4000 ) 
         - npm intsall pm2 -g
         - pm2 start npm --name "devTinder-backend" -- start
         - pm2 logs
         - pm2 list, pm2 flush <name> , pm2 stop <name>, pm2 delete <name>
-        - config nginx - /etc/nginx/sites-available/default
+        - config nginx - sudo nano /etc/nginx/sites-available/default
         - restart nginx - sudo systemctl restart nginx
         - Modify the BASEURL in frontend project to "/api"
 
@@ -100,6 +99,13 @@ Body
             proxy_cache_bypass $http_upgrade;
         }
 
+# Addding a custom Domain name
 
+    - purchased domain name from godaddy
+    - signup on cloudflare & add a new domain name
+    - change the nameservers on godaddy and point it to cloudflare
+    - wait for sometime till your nameservers are updated ~15 minutes
+    - DNS record: A devtinder.in => 43.204.96.49
+    - Enable SSL for website 
 
 
